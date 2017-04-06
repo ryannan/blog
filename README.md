@@ -1,5 +1,8 @@
 # blog
+> Record learning
+
 ## redux
+
 -  [redux中间件](./doc/redux-middleware.md)
 ### Eslint
 
