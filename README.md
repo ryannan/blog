@@ -11,6 +11,7 @@
 
 ## Other
 
+* [ES6 Generator & Co 解析](./doc/Generator&CO.md)
 * [V8中的 AST 抽象语法树](./doc/ast.md)
 
 ## QA
