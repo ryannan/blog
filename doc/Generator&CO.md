@@ -14,7 +14,7 @@ koa 和 egg 是基于 CO 实现，CO 使用了 ES6 Generator 的特性。强烈�
 
 * return，如果没有 return 则遍历器对象的 value 为 undefined
 
-* 惰性加载，只有 next 方法执行当前 yield 语句时，才会对当前 yield 语句进行求值
+* 惰性加载，只有 next 方法执行当前 yield 语句时，才会对当前 yield 语句进行求值
 
 * yield 语句默认返回 undefined，但是 next 方法可以带一个参数作为**上一个** yield 语句的返回值（但是第一个 next 方法不能带有参数，会被 V8 引擎忽略）
 
@@ -68,7 +68,7 @@ while (!res.done) {
 }
 ```
 
-通过循环判断遍历器对象的 done 属性，不过这种做法只是在同步状态下，以异步下就没有这么简单了，以一个读取文件```package.json```为例：
+通过循环判断遍历器对象的 done 属性，不过这种做法只是在同步状态下，在异步下就没有这么简单了，以一个读取文件```package.json```为例：
 
 ```js
 var fs = require('fs');
@@ -233,3 +233,4 @@ function next(ret) {
 
 * [阮一峰 ES6 Generator](http://es6.ruanyifeng.com/#docs/generator)
 * [Co](https://github.com/tj/co)
+* [相关演示代码](https://github.com/ryannan/co-demo)
