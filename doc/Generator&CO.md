@@ -220,12 +220,18 @@ function next(ret) {
     )
   );
 }
+
+function toPromise(obj) {
+  // ...
+  if ('function' == typeof obj) return thunkToPromise.call(this, obj);
+  // ...
+}
 ```
 
 * 使用 ```onFulfilled``` 方法执行 ```gen.next```，有异常则终止，没有异步调用 next()
 * next 是最关键的函数，它会反复调用自身
   * 第一行，检查遍历是否完成，是就返回
-  * 第二行，确保每一步的返回值是 Promise 对象
+  * 第二行，确保每一步的返回值是 Promise 对象，如果是 Thunk 函数也会通过 toPromise转换成 Promise 对象
   * 第三行，使用 then 方法，通过 ```onFulfilled``` 方法再次调用 next 函数
   * 第四行，在参数不符合要求的情况下（参数非 Thunk 函数和 Promise 对象），将 Promise 对象的状态改为`rejected`，从而终止执行
 
